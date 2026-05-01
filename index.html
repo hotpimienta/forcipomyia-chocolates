@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forcipomyia Chocolates</title>
+    
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FUENTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {--chocolate-oscuro: #2b1a12; --chocolate-crema: #d9b99b;}
+
+        html {scroll-behavior: smooth;}
+
+        body {font-family: 'Montserrat',sans-serif; background-color: #000000; color: #fdfaf7;}
+
+        h1, h2, h3, .navbar-brand {font-family: 'Playfair Display', serif; color:#fdfaf7;}
+
+        .hero-section {background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('inicio.png');
+         background-size: cover; background-position: center; color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+         align-items: center;}
+
+        .card {border: none; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+
+        .card:hover {transform: translateY(-10px);}
+
+        .btn-chocolate {background-color: var(--chocolate-oscuro); color: white; border-radius: 25px; padding: 10px 25px;}
+
+        .btn-chocolate:hover {background-color: #4a2e21; color: white;}
+        
+        .navbar {background-color: #5A3E2D !important;}
+
+        .navbar-brand {color: #CE8946 !important;}
+
+        .bounce-animation {display: inline-block;animation: bounce 2s infinite;}
+
+        @keyframes bounce {0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+        60% {transform: translateY(-5px);}}
+
+        .scroll-indicator:hover {opacity: 0.7; transition: opacity 0.3s ease;}
+
+        .product-card {cursor: pointer; transition: all 0.4s ease; position: relative;}
+
+        .product-image-wrapper {position: relative; overflow: hidden; border-radius: 10px; background-color: #3d261d;}
+
+        .product-info-overlay {position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(43, 26, 18, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px; opacity: 0; transition: opacity 0.3s ease;
+       text-align: center;}
+
+
+        .product-card.active .product-info-overlay {
+    opacity: 1;}
+
+        .product-description {
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #fdfaf7;
+    margin-bottom: 10px;}
+
+        .product-name {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 1.8rem;}
+
+        .product-price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #fdfaf7;}
+
+        .card-img-top, .product-image-wrapper img {
+    height: 350px !important;
+    object-fit: cover;
+    width: 100%;}
+    
+</style>
+
+</head>
+<body>
+
+<!-- EL BOTÓN MENÚ Y EL LOGO -->
+<div class="p-4 position-fixed top-0 start-0 z-3 d-flex align-items-center">
+    
+    <!-- Botón hamburguesa -->
+    <button class="btn btn-link text-decoration-none p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+        <i class="bi bi-list" style="font-size: 2.5rem; color: #d4af37; cursor: pointer; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));"></i>
+    </button>
+
+    <!-- logo con sombra sutil -->
+    <a class="text-decoration-none fs-4" href="#" style="font-family: 'Playfair Display', serif; color: #d4af37; text-shadow: 0px 2px 4px rgba(0,0,0,0.5);">
+        <i class="bi bi-bug-fill"></i> Forcipomyia
+    </a>
+    
+</div>
+
+    <!-- EL MENÚ LATERAL OCULTO -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" style="background-color: rgba(43, 26, 18, 0.85); width: 280px; backdrop-filter: blur(5px);">
+        
+        <!-- Encabezado del menú -->
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title" style="font-family: 'Playfair Display', serif; color: #d4af37;">
+                Menú de Navegación
+            </h5>
+            <!-- Botón para cerrar la X -->
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <!-- Cuerpo del menú con los enlaces -->
+        <div class="offcanvas-body d-flex flex-column mt-4">
+        <ul class="navbar-nav fs-5">
+           <li class="nav-item mb-3">
+           <a class="nav-link text-white" href="#inicio">Inicio</a>
+           </li>
+           <li class="nav-item mb-3">
+           <a class="nav-link text-white" href="#productos">Productos</a>
+           </li>
+           <li class="nav-item mb-3">
+           <a class="nav-link text-white" href="#experiencias">Experiencias</a>
+           </li>
+       </ul>
+     </div>
+   </div>
+
+    <!-- SECCIÓN HERO -->
+    <header id="inicio" class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 mb-4 text-white">Forcipomyia Chocolates</h1>
+            <p class="lead mb-4">Inspirados en el pequeño polinizador que hace posible el cacao más fino del mundo.</p>
+            <div class="mt-5">
+    <a href="#productos" class="text-decoration-none text-white scroll-indicator">
+        
+        <p class="mb-1" style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem;opacity: 0.9;">
+            Desliza hacia abajo para conocer
+        </p>
+        <p class="mb-0" style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1rem; opacity: 0.9;">
+            nuestros Productos & Experiencias
+        </p>
+        <div class="mt-3">
+            <i class="bi bi-chevron-down fs-2 bounce-animation" style="color: #d4af37;"></i>
+        </div>
+    </a>
+</div>
+        </div>
+    </header>
+
+    <!-- PRODUCTOS -->
+  <section id="productos" class="container py-5">
+        <h2 class="text-center mb-5" style="color: #d4af37; font-family: 'Playfair Display', serif;">Colección Premium</h2>
+        <div class="row g-4">
+
+            <!-- PRODUCTO 1 -->
+            <div class="col-12 col-md-6"> 
+            <div class="product-card" onclick="this.classList.toggle('active')">
+            <div class="product-image-wrapper">
+            <img src="producto1.png" alt="" class="img-fluid">
+            <div class="product-info-overlay">
+            <p class="product-description">Sumérgete en una experiencia sensorial profunda con nuestra tableta de chocolate negro. Elaborada con granos seleccionados, destaca por su equilibrio perfecto entre un amargor sofisticado y notas sutiles de frutos secos y madera. Es el capricho ideal para quienes buscan intensidad, una textura sedosa que se funde lentamente y un final persistente que celebra la pureza del cacao..</p>
+            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+            </div>
+             </div>
+            <div class="product-details mt-3 text-center">
+            <h6 class="product-name mb-1">Tableta de Chocolate Negro 70%</h6>
+            <p class="product-price">$30.000</p>
+             </div>
+             </div>
+             </div>
+
+            <!-- PRODUCTO 2 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="producto2.png" alt="" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Déjate envolver por la textura cremosa de nuestro pudín premium, una experiencia diseñada para los paladares más exigentes. Elaborado con cacao de origen único, cada bocado es un viaje directo a las notas más profundas y auténticas del chocolate.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3 text-center">
+                        <h6 class="product-name mb-1">X6 Pudines de Chocolate</h6>
+                        <p class="product-price">$50.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 3 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="producto3.png" alt="" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Descubre la esencia del chocolate en su forma más sofisticada. Nuestras trufas son una oda a la artesanía, combinando una técnica tradicional con el cacao de origen único más selecto para crear una explosión de sabor en cada pieza.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3 text-center">
+                        <h6 class="product-name mb-1">Trufas de Cacao Artesanal</h6>
+                        <p class="product-price">$40.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 4 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="producto4.png" alt="" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Lleva la experiencia del cacao a un nivel interactivo y sublime. Nuestra salsa de chocolate de origen único está diseñada para transformar cualquier postre en una obra de arte culinaria, ofreciendo una versatilidad sin precedentes con la calidad artesanal de siempre.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3 text-center">
+                        <h6 class="product-name mb-1">Salsa de Chocolate 500ml</h6>
+                        <p class="product-price">$70.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 5 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="producto5.png" alt="" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Un licor ultra premium de origen único que captura la esencia más pura y profunda del cacao artesanal. Su textura es sedosa y envolvente, con un color caoba intenso que anticipa una experiencia sensorial compleja. En nariz, despliega notas robustas de chocolate negro y frutos secos tostados, mientras que en paladar ofrece un equilibrio perfecto entre la fuerza del alcohol y la dulzura aterciopelada del cacao.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3 text-center">
+                        <h6 class="product-name mb-1">Elixir de Cacao 1L</h6>
+                        <p class="product-price">$150.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 6 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="producto6.png" alt="" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Nuestro cacao en polvo es la expresión más versátil y honesta del cacao de origen único. Procesado con métodos tradicionales para preservar sus antioxidantes y su perfil aromático natural, es el ingrediente definitivo para quienes buscan transformar lo cotidiano en algo extraordinario..</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3 text-center">
+                        <h6 class="product-name mb-1">Cacao Puro en Polvo 200g</h6>
+                        <p class="product-price">$25.000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+            <div class="col-12 text-center">
+           <p class="py-4" style="font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: 2px; color: #d4af37; border-top: 1px solid rgba(212, 175, 55,0.3);">
+           HAZNOS TU PEDIDO MEDIANTE CUALQUIERA DE NUESTROS MEDIOS OFICIALES</p>
+           <a href="#experiencias" class="text-decoration-none text-white scroll-indicator">
+           <p class="mb-2" style="font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: 2px;">
+            EXPLORA NUESTRAS EXPERIENCIAS </p>
+                    <div class="mt-3">
+                        <i class="bi bi-chevron-down fs-2 bounce-animation" style="color: #d4af37;"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCIAS -->
+   <section id="experiencias" class="py-5" style="background-color: var(--chocolate-oscuro);">
+    <div class="container text-center">
+        <h2 class="mb-5" style="font-family: 'Playfair Display', serif; color: #d4af37;">Experiencias Forcipomyia</h2>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- EXPERIENCIA 1 -->
+            <div class="col-12 col-md-5 mb-4">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <img src="experiencia1.png" alt="El Paraíso del Chocolatero" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Déjate llevar al corazón mismo de la tradición cacaotera y vive la experiencia completa del mejor chocolate artesanal del mundo. Enclavada en un valle de fincas exuberantes que se extienden hasta el horizonte bajo la luz dorada del atardecer, nuestra planta chocolatera es mucho más que una fábrica: es un santuario del cacao.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3">
+                        <i class="bi bi-cup-hot fs-2 mb-2" style="color: #d4af37;"></i>
+                        <h4 class="product-name">El Paraíso del Chocolatero</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCIA 2 -->
+            <div class="col-12 col-md-5 mb-4">
+                <div class="product-card" onclick="this.classList.toggle('active')">
+                    <div class="product-image-wrapper">
+                        <!-- Aquí pones la imagen de Regalos -->
+                        <img src="experiencia2.png" alt="Regalos corporativos" class="img-fluid">
+                        <div class="product-info-overlay">
+                            <p class="product-description">Regala un momento de pura ilusión y sofisticación con una experiencia única diseñada para celebrar la pasión por el cacao. Convierte esa fecha especial en un recuerdo inolvidable, donde el chocolate premium es el protagonista absoluto de una velada diseñada para deleitar los sentidos.</p>
+                            <span class="badge bg-light text-dark">Presiona para cerrar descripcion</span>
+                        </div>
+                    </div>
+                    <div class="product-details mt-3">
+                        <i class="bi bi-gift fs-2 mb-2" style="color: #d4af37;"></i>
+                        <h4 class="product-name">Evento: Anfitrion, El Chocolate</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!--FOOTER-->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 Forcipomyia Chocolates - Proyecto Politécnico Internacional</p>
+            <div class="mt-2">
+                <i class="bi bi-instagram mx-2"></i>
+                <i class="bi bi-facebook mx-2"></i>
+                <i class="bi bi-whatsapp mx-2"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+        document.querySelectorAll('#menuLateral .nav-link, .scroll-indicator').forEach(enlace => {
+            enlace.addEventListener('click', function(e) {
+                
+                e.preventDefault(); 
+                
+                const destino = document.querySelector(this.getAttribute('href'));
+                
+                const menuLateral = document.getElementById('menuLateral');
+                const instanciaMenu = bootstrap.Offcanvas.getInstance(menuLateral);
+                if (instanciaMenu) {
+                    instanciaMenu.hide();
+                }
+                
+                setTimeout(() => {
+                    destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300); 
+            });
+        });
+    </script>
+</body>
+</html>
